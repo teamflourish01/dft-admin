@@ -1,0 +1,55 @@
+.profile-avtar{
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    top: 315px;
+    padding-left: 450px;
+}
+
+@media only screen and (max-width: 375px) {
+    .profile-avtar{
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        top: 335px;
+        padding-left: 95px;
+    }
+
+
+}
+@media only screen and (max-width: 414px) {
+    .profile-avtar{
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        top: 450px;
+        padding-left: 120px;
+    }
+
+
+}
+@media only screen and (max-width: 393px) {
+    .profile-avtar{
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        top: 425px;
+        padding-left: 100px;
+    }
+
+
+}
+@media only screen and (max-width: 360px) {
+    .profile-avtar{
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        top: 370px;
+        padding-left: 85px;
+    }
+
+
+}
+
+
+
