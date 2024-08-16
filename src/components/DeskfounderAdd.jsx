@@ -33,7 +33,8 @@ const DeskfounderAdd = () => {
         setIsLoading(true);
         try {
             const formData = new FormData();
-            formData.append("Deskfounder_name", deskfounder.Deskfounder_name);
+            const editorContent = editor.current.value;
+            formData.append("Deskfounder_name", editorContent);
             if (image) {
                 formData.append("Deskfounder_image", image);
             }
@@ -97,12 +98,10 @@ const DeskfounderAdd = () => {
                     )}
                 </FormControl>
                 <FormControl>
-                    <FormLabel>Deskfounder Name</FormLabel>
+                    <FormLabel>Deskfounder Description</FormLabel>
                     <JoditEditor
                         ref={editor}
-                        value={deskfounder.Deskfounder_name}
                         config={{ readonly: false, height: "200px" }}
-                        onChange={(newContent) => setDeskfounder({ ...deskfounder, Deskfounder_name: newContent })}
                     />
                 </FormControl>
                 <Button

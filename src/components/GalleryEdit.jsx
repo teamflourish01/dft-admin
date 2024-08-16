@@ -15,6 +15,7 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 import { ArrowBackIcon, DeleteIcon } from '@chakra-ui/icons';
+import { MdDelete } from 'react-icons/md';
 
 const GalleryEdit = () => {
   const { id } = useParams();
@@ -168,14 +169,18 @@ const GalleryEdit = () => {
                 {imagePreviews.map((image, index) => (
                   <Box key={index} position="relative">
                     <Image src={image} alt={`Preview ${index}`} boxSize="200px" objectFit="cover" />
-                    <IconButton
-                      aria-label="Delete"
-                      icon={<DeleteIcon />}
-                      position="absolute"
-                      top="2"
-                      right="2"
-                      colorScheme="red"
+                    <MdDelete
+                      color="red"
+                      cursor="pointer"
+                      size={"40px"}
                       onClick={() => handleDelete(image)}
+                      style={{
+                        position: "absolute",
+                        top: "4px",
+                        right: "0",
+                        marginTop: "-2px",
+                        marginRight: "-2px",
+                      }}
                     />
                   </Box>
                 ))}
