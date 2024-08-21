@@ -80,6 +80,29 @@ const About = () => {
       formData.append("Our_vision_heading", item.Our_vision_heading);
       formData.append("Our_vision_text", item.Our_vision_text);
 
+
+  const  editAbout = async () => {
+    setIsLoading(true);
+    const formData = new FormData();
+    for (const key in detail) {
+      formData.append(key, detail[key]);
+    }
+    try {
+      let response = await fetch(`${url}/aboutpage/update/${detail._id}`, {
+        method: "PUT",
+        body: formData,
+      });
+      let data = await response.json();
+      toast({
+        title: "About Page Updated",
+        description: data.msg,
+        status: "success",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+      navigate("/admin/page");
+
       if (singleImg) {
         formData.append("About_images", singleImg);
       }
@@ -113,6 +136,7 @@ const About = () => {
           isClosable: true,
         });
       }
+
     } catch (error) {
       console.error("Update faild", error);
       toast({
