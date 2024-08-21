@@ -44,8 +44,18 @@ const DeskfounderAdd = () => {
         [{ indent: "-1" }, { indent: "+1" }],
         [{ direction: "rtl" }],
 
+
         [{ align: [] }],
 
+    const handleSave = async () => {
+        setIsLoading(true);
+        try {
+            const formData = new FormData();
+            const editorContent = editor.current.value;
+            formData.append("Deskfounder_name", editorContent);
+            if (image) {
+                formData.append("Deskfounder_image", image);
+            }
         ["link", "image", "video"],
         ["clean"],
       ],
@@ -78,6 +88,7 @@ const DeskfounderAdd = () => {
       if (image) {
         formData.append("Deskfounder_image", image);
       }
+
 
       const response = await axios.post(`${url}/deskfounder/posts`, formData);
 
@@ -147,9 +158,10 @@ const DeskfounderAdd = () => {
         <FormControl>
           <FormLabel>Description</FormLabel>
           {/* <JoditEditor
+
                         ref={editor}
-                        value={deskfounder.Deskfounder_name}
                         config={{ readonly: false, height: "200px" }}
+
                         onChange={(newContent) => setDeskfounder({ ...deskfounder, Deskfounder_name: newContent })}
                     /> */}
           <ReactQuill
@@ -189,6 +201,7 @@ const DeskfounderAdd = () => {
       </VStack>
     </Box>
   );
+
 };
 
 export default DeskfounderAdd;

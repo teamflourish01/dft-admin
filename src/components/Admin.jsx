@@ -20,15 +20,21 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { MdContactPage } from "react-icons/md";
-import {TbCategory} from "react-icons/tb"
-import {FaBell, FaUser } from "react-icons/fa";
-import { BsFileEarmarkPdfFill, BsPersonVcard,BsBriefcaseFill,BsShopWindow,BsPerson } from "react-icons/bs";
+import { TbCategory } from "react-icons/tb";
+import { FaBell, FaImage, FaUser } from "react-icons/fa";
+import {
+  BsFileEarmarkPdfFill,
+  BsPersonVcard,
+  BsBriefcaseFill,
+  BsShopWindow,
+  BsPerson,
+} from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
-import {LuPartyPopper} from "react-icons/lu"
-import {BiSolidUser,BiLogoBlogger,BiLogoGmail } from "react-icons/bi";
+import { LuPartyPopper } from "react-icons/lu";
+import { BiSolidUser, BiLogoBlogger, BiLogoGmail } from "react-icons/bi";
 import userContext from "../context/userDetails";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import {FiPower} from "react-icons/fi"
+import { FiPower } from "react-icons/fi";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AllRoutes from "./AllRoutes";
 
@@ -63,8 +69,6 @@ import DeskfounderView from "./DeskfounderView";
 import DeskfounderEdit from "./DeskfounderEdit";
 import DeskfounderAdd from "./DeskfounderAdd";
 
-
-
 // vbhijhbjvbjihbbjbhn
 import Profile from "./Profile";
 import SingleUser from "./SingleUser";
@@ -96,8 +100,8 @@ import EditBroucher from "./EditBroucher";
 import Inquiry from "./Inquiry";
 import ViewInquiry from "./ViewInquiry";
 import EditCard from "./EditCard";
-import Card from "./Card"
-import logo from "../images/image.png"
+import Card from "./Card";
+import logo from "../images/image.png";
 import Habibi from "./Habibi";
 import Manager from "./Manager";
 import AddManager from "./AddManager";
@@ -110,21 +114,16 @@ import Navbar from "./Navbar";
 import ViewToken from "./ViewToken";
 import EditToken from "./EditToken";
 
-
-
-
-
-
 const Admin = () => {
   const sidebar = useDisclosure();
   const color = useColorModeValue("gray.600", "gray.300");
   const { userData, setUserData } = useContext(userContext);
-  const navigate=useNavigate()
-  const handleLogOut=()=>{
-    localStorage.removeItem("user")
-    navigate("/login")
-    window.location.reload()
-  }
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+    window.location.reload();
+  };
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
     return (
@@ -177,7 +176,6 @@ const Admin = () => {
       overflowX="hidden"
       overflowY="auto"
       bg="#161616"
-      
       _dark={{
         bg: "gray.800",
       }}
@@ -187,7 +185,7 @@ const Admin = () => {
       w="60"
       {...props}
     >
-        <Image  src={logo} width={"120px"} />
+      <Image src={logo} width={"120px"} />
       <Flex px="4" py="0" align="center">
         <Text
           fontSize="2xl"
@@ -208,28 +206,59 @@ const Admin = () => {
         color="#b5b3b3"
         aria-label="Main Navigation"
       >
-        <NavItem icon={BsBriefcaseFill} onClick={()=>navigate("/admin")} >Dashboard</NavItem>
-        <NavItem icon={TbCategory} onClick={()=>navigate("/admin/page/home")}>Home</NavItem>
-        <NavItem icon={BsPersonVcard} onClick={()=>navigate("/admin/page/about")}>About</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/testimonial")}>Testimonials</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/notablealumni")}>Notable Alumni</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/alumnicommitiee")}>Alumni Commitiee</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/newsletter")}>Newsletter</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/notablealumnipage")}>Notable Alumni Page</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/gallery")}>Gallery</NavItem>
-        <NavItem icon={BsPerson} onClick={()=>navigate("/admin/page/deskfounder")}>Deskfounder</NavItem>
-
-
-
-
-        <NavItem icon={BsShopWindow} onClick={()=>navigate("/admin/product")}>Products</NavItem>
-        <NavItem icon={BsFileEarmarkPdfFill} onClick={()=>navigate("/admin/broucher")}>E-Broucher</NavItem>
-        <NavItem icon={FaUser} onClick={()=>navigate("/admin/user")}>Users</NavItem>
-        <NavItem icon={MdContactPage} onClick={()=>navigate("/admin/page")}>Pages</NavItem>
-        {/* <NavItem icon={BiLogoBlogger} onClick={()=>navigate("/admin/blog")}>Blogs</NavItem> */}
-        <NavItem icon={BiLogoGmail} onClick={()=>navigate("/admin/inquiry")}>Inquiry</NavItem>
-        <NavItem icon={LuPartyPopper} onClick={()=>navigate("/admin/annual")}>Annual Scheme</NavItem>
-        <NavItem icon={FaStore} onClick={()=>navigate("/admin/store")}>Outlets</NavItem>
+        <NavItem icon={BsBriefcaseFill} onClick={() => navigate("/admin")}>
+          Dashboard
+        </NavItem>
+        
+        <NavItem
+          icon={FaUser}
+          onClick={() => navigate("/admin/page/testimonial")}
+        >
+          Testimonials
+        </NavItem>
+        <NavItem
+          icon={FaUser}
+          onClick={() => navigate("/admin/page/notablealumni")}
+        >
+          Notable Alumni
+        </NavItem>
+        <NavItem
+          icon={BsPerson}
+          onClick={() => navigate("/admin/page/alumnicommitiee")}
+        >
+          Alumni Commitiee
+        </NavItem>
+        <NavItem
+          icon={BsFileEarmarkPdfFill}
+          onClick={() => navigate("/admin/page/newsletter")}
+        >
+          News Letter
+        </NavItem>
+        <NavItem
+          icon={BsPerson}
+          onClick={() => navigate("/admin/page/notablealumnipage")}
+        >
+          Notable Alumni Page
+        </NavItem>
+        <NavItem icon={FaImage} onClick={() => navigate("/admin/page/gallery")}>
+          Gallery
+        </NavItem>
+        <NavItem
+          icon={BsPerson}
+          onClick={() => navigate("/admin/page/deskfounder")}
+        >
+          Deskfounder
+        </NavItem>
+        
+        <NavItem icon={FaUser} onClick={() => navigate("/admin/user")}>
+          Users
+        </NavItem>
+        <NavItem icon={MdContactPage} onClick={() => navigate("/admin/page")}>
+          Pages
+        </NavItem>        
+        <NavItem icon={BiLogoGmail} onClick={() => navigate("/admin/inquiry")}>
+          Inquiry
+        </NavItem>
       </Flex>
     </Box>
   );
@@ -294,50 +323,57 @@ const Admin = () => {
             size="sm"
           />
           <Flex align="center">
-            
             <Menu>
-            <MenuButton rightIcon={<ChevronDownIcon />}>
-              {userData.image=="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"?
-              <Avatar
-              ml="4"
-              size="sm"
-              name="anubra266"
-              src={userData.image}
-              cursor="pointer"
-              />
-              :
-          <Avatar
-            ml="4"
-            size="sm"
-            name="anubra266"
-            src={"https://api.srwater.in/profile/"+userData.image}
-            cursor="pointer"
-            />
-            }
-            </MenuButton>
-            <MenuList >
+              <MenuButton rightIcon={<ChevronDownIcon />}>
+                {userData.image ==
+                "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png" ? (
+                  <Avatar
+                    ml="4"
+                    size="sm"
+                    name="anubra266"
+                    src={userData.image}
+                    cursor="pointer"
+                  />
+                ) : (
+                  <Avatar
+                    ml="4"
+                    size="sm"
+                    name="anubra266"
+                    src={"https://api.srwater.in/profile/" + userData.image}
+                    cursor="pointer"
+                  />
+                )}
+              </MenuButton>
+              <MenuList>
                 <MenuItem gap={"20px"}>
-                {userData.image=="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png"?
-              <Avatar
-              ml="4"
-              size="sm"
-              name="anubra266"
-              src={userData.image}
-              cursor="pointer"
-              />
-              :
-          <Avatar
-            ml="4"
-            size="sm"
-            name="anubra266"
-            src={"https://api.srwater.in/profile/"+userData.image}
-            cursor="pointer"
-            />
-            }
-            <Text>{userData.email}</Text>
+                  {userData.image ==
+                  "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png" ? (
+                    <Avatar
+                      ml="4"
+                      size="sm"
+                      name="anubra266"
+                      src={userData.image}
+                      cursor="pointer"
+                    />
+                  ) : (
+                    <Avatar
+                      ml="4"
+                      size="sm"
+                      name="anubra266"
+                      src={"https://api.srwater.in/profile/" + userData.image}
+                      cursor="pointer"
+                    />
+                  )}
+                  <Text>{userData.email}</Text>
                 </MenuItem>
-                <MenuItem gap="20px"  onClick={()=>navigate("/admin/profile")}><BiSolidUser/>Profile</MenuItem>
-                <MenuItem gap="20px"  onClick={handleLogOut}><FiPower/>LogOut</MenuItem>
+                <MenuItem gap="20px" onClick={() => navigate("/admin/profile")}>
+                  <BiSolidUser />
+                  Profile
+                </MenuItem>
+                <MenuItem gap="20px" onClick={handleLogOut}>
+                  <FiPower />
+                  LogOut
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -345,81 +381,125 @@ const Admin = () => {
         <Box as="main" p="4">
           {/* Add content here, remove div below  */}
           {/* <AllRoutes/> */}
-      <Routes>
-      <Route path="/page/home" element={<Home/>}/>
-      <Route path="/page/about" element={<About/>}/>
-      <Route path="/page/testimonial" element={<Testimonial/>}/>
-      <Route path="/page/testimonial/view/:id" element={<TestimonialView />} />
-      <Route path="/page/testimonial/edit/:id" element={<TestimonialEdit />} />
-      <Route path="/page/testimonial/add" element={<TestimonialAdd />} />
-      <Route path="/page/notablealumni" element={<Notablealumni />} />
-      <Route path="/page/notablealumni/view/:id" element={<NotablealumniView/>} />
-      <Route path="/page/notablealumni/edit/:id" element={<NotablealumniEdit/>} />
-      <Route path="/page/notablealumni/add" element={<NotablealumniAdd/>} />
-      <Route path="/page/alumnicommitiee" element={<Alumnicommitiee />} />
-      <Route path="/page/alumnicommitiee/view/:id" element={<AlumnicommitieeView/>} />
-      <Route path="/page/alumnicommitiee/edit/:id" element={<AlumnicommitieeEdit/>} />
-      <Route path="/page/alumnicommitiee/add" element={<AlumnicommitieeAdd/>} />
-      <Route path="/page/newsletter" element={<Newsletter />} />
-      <Route path="/page/newsletter/edit/:id" element={<NewsletterEdit/>} />
-      <Route path="/page/newsletter/add" element={<NewsletterAdd/>} />
-      <Route path="/page/notablealumnipage" element={<Notablealumnipage />} />
-      <Route path="/page/notablealumnipage/view/:id" element={<NotablealumnipageView/>} />
-      <Route path="/page/notablealumnipage/edit/:id" element={<NotablealumnipageEdit/>} />
-      <Route path="/page/notablealumnipage/add" element={<NotablealumnipageAdd/>} />
-      <Route path="/page/gallery" element={<Gallery />} />
-      <Route path="/page/gallery/view/:id" element={<GalleryView/>} />
-      <Route path="/page/gallery/edit/:id" element={<GalleryEdit/>} />
-      <Route path="/page/gallery/add" element={<GalleryAdd/>} />
-      <Route path="/page/deskfounder" element={<Deskfounder />} />
-      <Route path="/page/deskfounder/view/:id" element={<DeskfounderView/>} />
-      <Route path="/page/deskfounder/edit/:id" element={<DeskfounderEdit/>} />
-      <Route path="/page/deskfounder/add" element={<DeskfounderAdd/>} />
+          <Routes>
+            <Route path="/page/home/edit/:id" element={<Home />} />
+            <Route path="/page/about/edit/:id" element={<About />} />
+            <Route path="/page/testimonial" element={<Testimonial />} />
+            <Route
+              path="/page/testimonial/view/:id"
+              element={<TestimonialView />}
+            />
+            <Route
+              path="/page/testimonial/edit/:id"
+              element={<TestimonialEdit />}
+            />
+            <Route path="/page/testimonial/add" element={<TestimonialAdd />} />
+            <Route path="/page/notablealumni" element={<Notablealumni />} />
+            <Route
+              path="/page/notablealumni/view/:id"
+              element={<NotablealumniView />}
+            />
+            <Route
+              path="/page/notablealumni/edit/:id"
+              element={<NotablealumniEdit />}
+            />
+            <Route
+              path="/page/notablealumni/add"
+              element={<NotablealumniAdd />}
+            />
+            <Route path="/page/alumnicommitiee" element={<Alumnicommitiee />} />
+            <Route
+              path="/page/alumnicommitiee/view/:id"
+              element={<AlumnicommitieeView />}
+            />
+            <Route
+              path="/page/alumnicommitiee/edit/:id"
+              element={<AlumnicommitieeEdit />}
+            />
+            <Route
+              path="/page/alumnicommitiee/add"
+              element={<AlumnicommitieeAdd />}
+            />
+            <Route path="/page/newsletter" element={<Newsletter />} />
+            <Route
+              path="/page/newsletter/edit/:id"
+              element={<NewsletterEdit />}
+            />
+            <Route path="/page/newsletter/add" element={<NewsletterAdd />} />
+            <Route
+              path="/page/notablealumnipage"
+              element={<Notablealumnipage />}
+            />
+            <Route
+              path="/page/notablealumnipage/view/:id"
+              element={<NotablealumnipageView />}
+            />
+            <Route
+              path="/page/notablealumnipage/edit/:id"
+              element={<NotablealumnipageEdit />}
+            />
+            <Route
+              path="/page/notablealumnipage/add"
+              element={<NotablealumnipageAdd />}
+            />
+            <Route path="/page/gallery" element={<Gallery />} />
+            <Route path="/page/gallery/view/:id" element={<GalleryView />} />
+            <Route path="/page/gallery/edit/:id" element={<GalleryEdit />} />
+            <Route path="/page/gallery/add" element={<GalleryAdd />} />
+            <Route path="/page/deskfounder" element={<Deskfounder />} />
+            <Route
+              path="/page/deskfounder/view/:id"
+              element={<DeskfounderView />}
+            />
+            <Route
+              path="/page/deskfounder/edit/:id"
+              element={<DeskfounderEdit />}
+            />
+            <Route path="/page/deskfounder/add" element={<DeskfounderAdd />} />
 
-
-
-
-
-        {/* <Route path='/admin/login' element={<SignUp/>} /> */}
-        {/* <Route path='/admin' element={<Admin/>} /> */}
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='/profile/:userid' element={<SingleUser/>} />
-        <Route path='/view/:userid' element={<ViewUser/>} />
-        <Route path='/user' element={<User/>}/>
-        <Route path="/user/add" element={<AddUser/>}/>
-        <Route path="/" element={<Dashboard/>}/>
-        <Route path="/category" element={<Category/>} />
-        <Route path="/category/:categoryid" element={<ViewCategory/>}/>
-        <Route path="/category/edit/:categoryid" element={<EditCategory/>}/>
-        <Route path="/category/add" element={<AddCategory/>}/>
-        <Route path="/product" element={<Product/>}/>
-        <Route path="/product/:productid" element={<ViewProduct/>}/>
-        <Route path="/product/edit/:productid" element={<EditProduct/>}/>
-        <Route path="/product/add" element={<AddProduct/>}/>
-        <Route path="/card/add" element={<Card/>}/>
-        <Route path="/card/edit/:name" element={<EditCard/>}/>
-        <Route path="/card" element={<CardList/>}/>
-        <Route path="/page" element={<Pages/>}/>
-        <Route path="/inquiry" element={<Inquiry/>}/>
-        <Route path='/page/news' element={<News/>}/>
-        <Route path="/page/news/add" element={<AddNews/>} />
-        <Route path="/page/news/:newsid" element={<ViewNews/>}/>
-        <Route path="/page/news/edit/:newsid" element={<EditNews/>}/>
-        <Route path="/broucher" element={<Broucher/>}/>
-        <Route path="/broucher/add" element={<AddBroucher/>} />
-        <Route path="/broucher/edit/:id" element={<EditBroucher/>} />
-        <Route path="/inquiry/:id" element={<ViewInquiry/>} />
-        <Route path="/annual" element={<Habibi/>}/>
-        <Route path="/annual/manager" element={<Manager/>}/>
-        <Route path="/annual/manager/add" element={<AddManager/>} />
-        <Route path="/store" element={<OurOutlets/>}/>
-        <Route path="/store/add" element={<AddOutlet/>}/>
-        <Route path="/store/edit/:id" element={<EditOutlet/>}/>
-        <Route path="/store/:id" element={<ViewOutlet/>}/>
-        <Route path="/page/navbar" element={<Navbar/>}/>
-        <Route path="/annual/view/:id" element={<ViewToken/>}/>
-        <Route path="/annual/edit/:id" element={<EditToken/>}/>
-    </Routes>
+            {/* <Route path='/admin/login' element={<SignUp/>} /> */}
+            {/* <Route path='/admin' element={<Admin/>} /> */}
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:userid" element={<SingleUser />} />
+            <Route path="/view/:userid" element={<ViewUser />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/user/add" element={<AddUser />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/category/:categoryid" element={<ViewCategory />} />
+            <Route
+              path="/category/edit/:categoryid"
+              element={<EditCategory />}
+            />
+            <Route path="/category/add" element={<AddCategory />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/product/:productid" element={<ViewProduct />} />
+            <Route path="/product/edit/:productid" element={<EditProduct />} />
+            <Route path="/product/add" element={<AddProduct />} />
+            <Route path="/card/add" element={<Card />} />
+            <Route path="/card/edit/:name" element={<EditCard />} />
+            <Route path="/card" element={<CardList />} />
+            <Route path="/page" element={<Pages />} />
+            <Route path="/inquiry" element={<Inquiry />} />
+            <Route path="/page/news" element={<News />} />
+            <Route path="/page/news/add" element={<AddNews />} />
+            <Route path="/page/news/:newsid" element={<ViewNews />} />
+            <Route path="/page/news/edit/:newsid" element={<EditNews />} />
+            <Route path="/broucher" element={<Broucher />} />
+            <Route path="/broucher/add" element={<AddBroucher />} />
+            <Route path="/broucher/edit/:id" element={<EditBroucher />} />
+            <Route path="/inquiry/:id" element={<ViewInquiry />} />
+            <Route path="/annual" element={<Habibi />} />
+            <Route path="/annual/manager" element={<Manager />} />
+            <Route path="/annual/manager/add" element={<AddManager />} />
+            <Route path="/store" element={<OurOutlets />} />
+            <Route path="/store/add" element={<AddOutlet />} />
+            <Route path="/store/edit/:id" element={<EditOutlet />} />
+            <Route path="/store/:id" element={<ViewOutlet />} />
+            <Route path="/page/navbar" element={<Navbar />} />
+            <Route path="/annual/view/:id" element={<ViewToken />} />
+            <Route path="/annual/edit/:id" element={<EditToken />} />
+          </Routes>
           <Box rounded="md" h="96" />
         </Box>
       </Box>
