@@ -88,7 +88,7 @@ const About = () => {
     }
   };
 
-  const editAbout = async () => {
+  const  editAbout = async () => {
     setIsLoading(true);
     const formData = new FormData();
     for (const key in detail) {
