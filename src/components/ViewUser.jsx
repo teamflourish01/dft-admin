@@ -57,7 +57,7 @@ const ViewUser = () => {
           ml="4"
           size="2xl"
           name="anubra266"
-          src={`${process.env.REACT_APP_DEV_URL}/profile/`+ user.image}
+          src={`${process.env.REACT_APP_DEV_URL}/user/`+ user.image}
           cursor="pointer"
         />
       )}

@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Center,
   Collapse,
   Drawer,
   DrawerContent,
@@ -76,54 +77,28 @@ import ViewUser from "./ViewUser";
 import User from "./User";
 import AddUser from "./AddUser";
 import Dashboard from "./Dashboard";
-import Category from "./Category";
-import ViewCategory from "./ViewCategory";
-import EditCategory from "./EditCategory";
-import AddCategory from "./AddCategory";
-import Product from "./Product";
-import ViewProduct from "./ViewProduct";
-import EditProduct from "./EditProduct";
-import AddProduct from "./AddProduct";
-import CardList from "./CardList";
+
 import Pages from "./Pages";
-import Blog from "./Blog";
-import AddBlog from "./AddBlog";
-import ViewBlog from "./ViewBlog";
-import EditBlog from "./EditBlog";
-import News from "./News";
-import AddNews from "./AddNews";
-import ViewNews from "./ViewNews";
-import EditNews from "./EditNews";
-import Broucher from "./Broucher";
-import AddBroucher from "./AddBroucher";
-import EditBroucher from "./EditBroucher";
+
 import Inquiry from "./Inquiry";
 import ViewInquiry from "./ViewInquiry";
-import EditCard from "./EditCard";
-import Card from "./Card";
+
 import logo from "../images/image.png";
-import Habibi from "./Habibi";
-import Manager from "./Manager";
-import AddManager from "./AddManager";
-import OurOutlets from "./OurOutlets";
-import AddOutlet from "./AddOutlet";
-import EditOutlet from "./EditOutlet";
-import ViewOutlet from "./ViewOutlet";
-import { FaStore } from "react-icons/fa6";
+
 import Navbar from "./Navbar";
-import ViewToken from "./ViewToken";
-import EditToken from "./EditToken";
 
 const Admin = () => {
   const sidebar = useDisclosure();
   const color = useColorModeValue("gray.600", "gray.300");
-  const { userData, setUserData } = useContext(userContext);
+  const { userData, getUserData, token } = useContext(userContext);
   const navigate = useNavigate();
+
   const handleLogOut = () => {
-    localStorage.removeItem("user");
-    navigate("/login");
+    localStorage.removeItem("token");
+    navigate("/");
     window.location.reload();
   };
+
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
     return (
@@ -185,7 +160,9 @@ const Admin = () => {
       w="60"
       {...props}
     >
-      <Image src={logo} width={"120px"} />
+      <Flex justifyContent={"center"} m={"20px"}>
+        <Image src={logo} width={"80px"} />
+      </Flex>
       <Flex px="4" py="0" align="center">
         <Text
           fontSize="2xl"
@@ -195,6 +172,7 @@ const Admin = () => {
             color: "white",
           }}
           fontWeight="semibold"
+          textTransform={"capitalize"}
         >
           {userData.name || "Unknown"}
         </Text>
@@ -209,7 +187,9 @@ const Admin = () => {
         <NavItem icon={BsBriefcaseFill} onClick={() => navigate("/admin")}>
           Dashboard
         </NavItem>
-        
+        <NavItem icon={FaUser} onClick={() => navigate("/admin/user")}>
+          Users
+        </NavItem>
         <NavItem
           icon={FaUser}
           onClick={() => navigate("/admin/page/testimonial")}
@@ -249,13 +229,10 @@ const Admin = () => {
         >
           Deskfounder
         </NavItem>
-        
-        <NavItem icon={FaUser} onClick={() => navigate("/admin/user")}>
-          Users
-        </NavItem>
+
         <NavItem icon={MdContactPage} onClick={() => navigate("/admin/page")}>
           Pages
-        </NavItem>        
+        </NavItem>
         <NavItem icon={BiLogoGmail} onClick={() => navigate("/admin/inquiry")}>
           Inquiry
         </NavItem>
@@ -263,9 +240,9 @@ const Admin = () => {
     </Box>
   );
   useEffect(() => {
-    // console.log(userData);
-  }, [userData]);
-
+    getUserData();
+  }, [token]);
+  console.log("AdminPage Login User", userData);
   return (
     <Box
       as="section"
@@ -339,7 +316,7 @@ const Admin = () => {
                     ml="4"
                     size="sm"
                     name="anubra266"
-                    src={"https://api.srwater.in/profile/" + userData.image}
+                    src={"http://localhost:8080/user/" + userData.image}
                     cursor="pointer"
                   />
                 )}
@@ -360,7 +337,7 @@ const Admin = () => {
                       ml="4"
                       size="sm"
                       name="anubra266"
-                      src={"https://api.srwater.in/profile/" + userData.image}
+                      src={"http://localhost:8080/user/" + userData.image}
                       cursor="pointer"
                     />
                   )}
@@ -460,45 +437,17 @@ const Admin = () => {
             {/* <Route path='/admin/login' element={<SignUp/>} /> */}
             {/* <Route path='/admin' element={<Admin/>} /> */}
             <Route path="/profile" element={<Profile />} />
-            <Route path="/profile/:userid" element={<SingleUser />} />
+            <Route path="/profile/:id" element={<SingleUser />} />
             <Route path="/view/:userid" element={<ViewUser />} />
             <Route path="/user" element={<User />} />
             <Route path="/user/add" element={<AddUser />} />
             <Route path="/" element={<Dashboard />} />
-            <Route path="/category" element={<Category />} />
-            <Route path="/category/:categoryid" element={<ViewCategory />} />
-            <Route
-              path="/category/edit/:categoryid"
-              element={<EditCategory />}
-            />
-            <Route path="/category/add" element={<AddCategory />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/product/:productid" element={<ViewProduct />} />
-            <Route path="/product/edit/:productid" element={<EditProduct />} />
-            <Route path="/product/add" element={<AddProduct />} />
-            <Route path="/card/add" element={<Card />} />
-            <Route path="/card/edit/:name" element={<EditCard />} />
-            <Route path="/card" element={<CardList />} />
+
             <Route path="/page" element={<Pages />} />
             <Route path="/inquiry" element={<Inquiry />} />
-            <Route path="/page/news" element={<News />} />
-            <Route path="/page/news/add" element={<AddNews />} />
-            <Route path="/page/news/:newsid" element={<ViewNews />} />
-            <Route path="/page/news/edit/:newsid" element={<EditNews />} />
-            <Route path="/broucher" element={<Broucher />} />
-            <Route path="/broucher/add" element={<AddBroucher />} />
-            <Route path="/broucher/edit/:id" element={<EditBroucher />} />
             <Route path="/inquiry/:id" element={<ViewInquiry />} />
-            <Route path="/annual" element={<Habibi />} />
-            <Route path="/annual/manager" element={<Manager />} />
-            <Route path="/annual/manager/add" element={<AddManager />} />
-            <Route path="/store" element={<OurOutlets />} />
-            <Route path="/store/add" element={<AddOutlet />} />
-            <Route path="/store/edit/:id" element={<EditOutlet />} />
-            <Route path="/store/:id" element={<ViewOutlet />} />
+
             <Route path="/page/navbar" element={<Navbar />} />
-            <Route path="/annual/view/:id" element={<ViewToken />} />
-            <Route path="/annual/edit/:id" element={<EditToken />} />
           </Routes>
           <Box rounded="md" h="96" />
         </Box>

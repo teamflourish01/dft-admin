@@ -71,19 +71,19 @@ const GalleryEdit = () => {
         },
         body: JSON.stringify({ deleteImages: [...imagesToDelete, imageName] }), // Send the image names to be deleted
       });
-
+      const data = await response.json();
       if (response.ok) {
         setImagePreviews(prevPreviews => prevPreviews.filter(preview => preview !== imageUrl));
         toast({
           title: "Image Deleted",
+          
           status: "success",
           position: "top",
           duration: 9000,
           isClosable: true,
         });
-      } else {
-        const data = await response.json();
-        throw new Error(data.message || "Failed to delete image");
+      } else {        
+        throw new Error(data.msg || "Failed to delete image");
       }
     } catch (error) {
       toast({
@@ -116,19 +116,19 @@ const GalleryEdit = () => {
         method: "PUT",
         body: formData,
       });
-
+      const data = await response.json();
       if (response.ok) {
         toast({
-          title: "Gallery Updated",
+          title: "Gallery Update Successfuly",
+          description: data.msg,
           status: "success",
           position: "top",
           duration: 9000,
           isClosable: true,
         });
         navigate(-1);
-      } else {
-        const data = await response.json();
-        throw new Error(data.message || "Something went wrong");
+      } else {        
+        throw new Error(data.msg || "Something went wrong");
       }
     } catch (error) {
       toast({
