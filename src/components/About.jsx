@@ -169,6 +169,7 @@ const About = () => {
             <Textarea
               value={item.Our_mision_text}
               name="Our_mision_text"
+              maxLength={229}
               onChange={handleChange}
             />
           </FormControl>
@@ -187,6 +188,7 @@ const About = () => {
             <Textarea
               value={item.Our_vision_text}
               name="Our_vision_text"
+              maxLength={229}
               onChange={handleChange}
             />
           </FormControl>

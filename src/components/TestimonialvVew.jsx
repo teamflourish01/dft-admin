@@ -76,6 +76,38 @@ const TestimonialView = () => {
                             rows={4}
                         />
                     </FormControl>
+                    <FormControl>
+            <FormLabel >
+              Created at
+            </FormLabel>
+            {testimonial.createdAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(testimonial.createdAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+            <FormLabel>
+              Modified at
+            </FormLabel>
+            {testimonial.modifiedAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(testimonial.modifiedAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+          </FormControl>
                 </VStack>
             ) : (
                 <Text>Loading...</Text>

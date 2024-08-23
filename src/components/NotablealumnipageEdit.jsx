@@ -111,6 +111,7 @@ const NotablealumnipageEdit = () => {
                         <FormLabel>Notable Alumni Text</FormLabel>
                         <Textarea
                             value={notableAlumnipage.notableAlumniPages_text}
+                            maxLength={750}
                             onChange={(e) =>
                                 setNotableAlumnipage({ ...notableAlumnipage, notableAlumniPages_text: e.target.value })
                             }

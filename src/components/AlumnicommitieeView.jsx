@@ -74,6 +74,38 @@ const AlumnicommitieeiView = () => {
                             placeholder="Committee Member Designation"
                         />
                     </FormControl>
+                    <FormControl>
+            <FormLabel >
+              Created at
+            </FormLabel>
+            {alumnicommitiee.createdAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(alumnicommitiee.createdAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+            <FormLabel>
+              Modified at
+            </FormLabel>
+            {alumnicommitiee.modifiedAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(alumnicommitiee.modifiedAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+          </FormControl>
                 </VStack>
             ) : (
                 <Text>Loading...</Text>

@@ -22,8 +22,9 @@ import "react-quill/dist/quill.snow.css";
 const DeskfounderAdd = () => {
   const navigate = useNavigate();
   const [deskfounder, setDeskfounder] = useState({
-    Description: "",
-    Author_Name: "",
+    description: "",
+    author_name: "",
+    Deskfounder_image: "",
   });
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -72,11 +73,11 @@ const DeskfounderAdd = () => {
     setIsLoading(true);
     try {
       const formData = new FormData();
-      formData.append("Description", deskfounder.Description);
-      formData.append("Author_Name", deskfounder.Author_Name);
+      formData.append("description", deskfounder.description);
+      formData.append("author_name", deskfounder.author_name);
 
       if (image) {
-        formData.append("Deskfounder_image", image);
+        formData.append("Deskfounder_images", image);
       }
 
       const response = await axios.post(`${url}/deskfounder/posts`, formData);
@@ -84,6 +85,7 @@ const DeskfounderAdd = () => {
       if (response.status === 200) {
         toast({
           title: "Deskfounder Added",
+          description: response.data.msg || "unkonwn arror",
           status: "success",
           position: "top",
           duration: 9000,
@@ -91,7 +93,7 @@ const DeskfounderAdd = () => {
         });
         navigate("/admin/page/deskfounder");
       } else {
-        throw new Error(response.data.message || "Something went wrong");
+        throw new Error(response.data.msg || "Something went wrong");
       }
     } catch (error) {
       toast({
@@ -131,7 +133,12 @@ const DeskfounderAdd = () => {
         </Text>
         <FormControl>
           <FormLabel>Deskfounder Image</FormLabel>
-          <Input type="file" onChange={handleFileChange} />
+          <Input
+            type="file"
+            name="Deskfounder_images"
+            accept="image/*"
+            onChange={handleFileChange}
+          />
           {imagePreview && (
             <Image
               src={imagePreview}
@@ -153,9 +160,9 @@ const DeskfounderAdd = () => {
                         onChange={(newContent) => setDeskfounder({ ...deskfounder, Deskfounder_name: newContent })}
                     /> */}
           <ReactQuill
-            value={deskfounder.Description}
+            value={deskfounder.description}
             onChange={(newContent) =>
-              setDeskfounder({ ...deskfounder, Description: newContent })
+              setDeskfounder({ ...deskfounder, description: newContent })
             }
             modules={modules}
             // formats={formats}
@@ -168,16 +175,16 @@ const DeskfounderAdd = () => {
           <FormLabel>Author Name</FormLabel>
           <Input
             type="text"
-            value={deskfounder.Author_Name}
+            value={deskfounder.author_name}
             onChange={(e) =>
-              setDeskfounder({ ...deskfounder, Author_Name: e.target.value })
+              setDeskfounder({ ...deskfounder, author_name: e.target.value })
             }
             placeholder="Enter Author Name"
             borderRadius="md"
             mb={4}
           />
         </FormControl>
-        {console.log(setDeskfounder.Author_Name)}
+        {console.log(setDeskfounder.author_name)}
         <Button
           colorScheme="teal"
           variant="solid"
