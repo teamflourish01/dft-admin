@@ -44,6 +44,7 @@ const NotablealumniAdd = () => {
             if (response.status === 200) {
                 toast({
                     title: "Notable Alumni Added",
+                    description: response.data.msg,
                     status: "success",
                     position: "top",
                     duration: 9000,
@@ -51,12 +52,12 @@ const NotablealumniAdd = () => {
                 });
                 navigate('/admin/page/notablealumni');
             } else {
-                throw new Error(response.data.message || "Something went wrong");
+                throw new Error(response.data.msg || "Something went wrong");
             }
         } catch (error) {
             toast({
                 title: "Error Adding Notable Alumni",
-                description: error.message,
+                description: error.response?.data?.msg || "An error occurred.",
                 status: "error",
                 position: "top",
                 duration: 9000,

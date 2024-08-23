@@ -67,6 +67,38 @@ const Notablealumnipageview = () => {
               placeholder="Notable Alumni Text"
             />
           </FormControl>
+          <FormControl>
+            <FormLabel >
+              Created at
+            </FormLabel>
+            {notableAlumnipage.createdAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(notableAlumnipage.createdAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+            <FormLabel>
+              Modified at
+            </FormLabel>
+            {notableAlumnipage.modifiedAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(notableAlumnipage.modifiedAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+          </FormControl>
         </VStack>
       ) : (
         <Text>Loading...</Text>

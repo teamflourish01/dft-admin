@@ -57,6 +57,7 @@ const GalleryAdd = () => {
       if (response.status === 200) {
         toast({
           title: "Gallery Added",
+          description: response.data.msg,
           status: "success",
           position: "top",
           duration: 9000,
@@ -64,12 +65,12 @@ const GalleryAdd = () => {
         });
         navigate("/admin/page/gallery");
       } else {
-        throw new Error(response.data.message || "Failed to add gallery");
+        throw new Error(response.data.msg || "Failed to add gallery");
       }
     } catch (error) {
       toast({
         title: "Error Adding Gallery",
-        description: error.message,
+        description: error.response?.data?.msg || "upload image only 438 X 282 px",
         status: "error",
         position: "top",
         duration: 9000,

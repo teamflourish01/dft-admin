@@ -297,6 +297,7 @@ const Home = () => {
                 key={idx}
                 value={text}
                 name="event_text"
+                maxLength={100}
                 onChange={(e) => {
                   const updatedTexts = [...item.event_text];
                   updatedTexts[idx] = e.target.value;

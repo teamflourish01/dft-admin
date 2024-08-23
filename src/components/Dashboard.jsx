@@ -18,25 +18,16 @@ const Dashboard = () => {
     try {
         let data=await fetch(`${process.env.REACT_APP_DEV_URL}/user`)
         data=await data.json()
-        console.log(data);
+        
         setUser(data.data.length)
     } catch (error) {
         console.log(error);
     }
 }
-const getBlog=async()=>{
-  try {
-    let data=await fetch(`${process.env.REACT_APP_DEV_URL}/blog`)
-    data=await data.json()
-    setBlog(data.data.length)
-    console.log(data.data.length);
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 useEffect(()=>{
   getData()
-  getBlog()
+  
 },[])
   return (
     <Flex justifyContent={"space-around"} gap="40px" >

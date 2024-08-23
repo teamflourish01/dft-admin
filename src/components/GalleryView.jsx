@@ -67,6 +67,38 @@ const GalleryView = () => {
                             <Text>No Images Available</Text>
                         )}
                     </FormControl>
+                    <FormControl>
+            <FormLabel >
+              Created at
+            </FormLabel>
+            {galleryItem.createdAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(galleryItem.createdAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+            <FormLabel>
+              Modified at
+            </FormLabel>
+            {galleryItem.modifiedAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(galleryItem.modifiedAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+          </FormControl>
                 </VStack>
             ) : (
                 <Text>Loading...</Text>

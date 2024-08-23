@@ -44,6 +44,7 @@ const TestimonialAdd = () => {
             if (response.status === 200) {
                 toast({
                     title: "Testimonial Added",
+                    description: response.data.msg,
                     status: "success",
                     position: "top",
                     duration: 9000,
@@ -51,12 +52,12 @@ const TestimonialAdd = () => {
                 });
                 navigate('/admin/page/testimonial');
             } else {
-                throw new Error(response.data.message || "Something went wrong");
+                throw new Error(response.data.msg || "Something went wrong");
             }
         } catch (error) {
             toast({
                 title: "Error Adding Testimonial",
-                description: error.message,
+                description: error.response?.data?.msg || "An error occurred.",
                 status: "error",
                 position: "top",
                 duration: 9000,

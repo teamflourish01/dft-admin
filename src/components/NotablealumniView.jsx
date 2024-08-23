@@ -74,6 +74,38 @@ const NotablealumniView = () => {
                             placeholder="Notable Alumni Designation"
                         />
                     </FormControl>
+                    <FormControl>
+            <FormLabel >
+              Created at
+            </FormLabel>
+            {notablealumni.createdAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(notablealumni.createdAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+            <FormLabel>
+              Modified at
+            </FormLabel>
+            {notablealumni.modifiedAt && (
+              <Box
+                padding="10px 20px"
+                width="30%"
+                bgColor={"#eef1f4"}
+                fontSize={"medium"}
+              >
+                {new Date(notablealumni.modifiedAt).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                })}
+              </Box>
+            )}
+          </FormControl>
                 </VStack>
             ) : (
                 <Text>Loading...</Text>
