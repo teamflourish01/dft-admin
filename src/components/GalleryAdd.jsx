@@ -19,6 +19,9 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 
 const GalleryAdd = () => {
+  const [glink, setGlink] = useState({
+    gallary_link: "",
+  });
   const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +49,7 @@ const GalleryAdd = () => {
     setIsLoading(true);
     try {
       const formData = new FormData();
+      formData.append("gallary_link", glink.gallary_link);
       images.forEach((image) => formData.append("Gallery_images", image));
 
       const response = await axios.post(`${url}/gallery/posts`, formData, {
@@ -70,7 +74,8 @@ const GalleryAdd = () => {
     } catch (error) {
       toast({
         title: "Error Adding Gallery",
-        description: error.response?.data?.msg || "upload image only 438 X 282 px",
+        description:
+          error.response?.data?.msg || "upload image only 438 X 282 px",
         status: "error",
         position: "top",
         duration: 9000,
@@ -104,6 +109,19 @@ const GalleryAdd = () => {
           Add New Gallery
         </Text>
         <FormControl>
+          <FormLabel>Images Link</FormLabel>
+          <Input
+            value={glink.gallary_link}
+            onChange={(e) =>
+              setGlink({
+                ...glink,
+                gallary_link: e.target.value,
+              })
+            }
+            placeholder="Google Drive Link"
+          />
+        </FormControl>
+        <FormControl>
           <FormLabel>Gallery Images</FormLabel>
           <Input type="file" multiple onChange={handleFileChange} />
           {imagePreviews.length > 0 && (
@@ -121,12 +139,12 @@ const GalleryAdd = () => {
                     cursor="pointer"
                     size={"40px"}
                     style={{
-                        position: "absolute",
-                        top: "4px",
-                        right: "0",
-                        marginTop: "-2px",
-                        marginRight: "-2px",
-                      }}
+                      position: "absolute",
+                      top: "4px",
+                      right: "0",
+                      marginTop: "-2px",
+                      marginRight: "-2px",
+                    }}
                     onClick={() => handleDelete(image)}
                   />
                 </Box>
