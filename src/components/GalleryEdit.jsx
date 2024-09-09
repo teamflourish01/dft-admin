@@ -19,7 +19,7 @@ import { MdDelete } from 'react-icons/md';
 
 const GalleryEdit = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
   const [galleryItem, setGalleryItem] = useState(null);
   const [error, setError] = useState(null);
   const [images, setImages] = useState([]);
@@ -37,7 +37,8 @@ const GalleryEdit = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         let data = await response.json();
-        setGalleryItem(data);
+        setGalleryItem(data);     
+        
         setImagePreviews(data.Gallery_images.map(image => `${url}/gallery/${image}`));
       } catch (error) {
         console.error("Error fetching gallery item:", error);
@@ -103,7 +104,7 @@ const GalleryEdit = () => {
     setIsLoading(true);
     try {
       const formData = new FormData();
-      formData.append("Gallery_name", galleryItem.Gallery_name); // Example field
+      formData.append("gallary_link", galleryItem.gallary_link); // Example field
 
       // Append only the new images
       if (images.length > 0) {
@@ -161,6 +162,19 @@ const GalleryEdit = () => {
           <Text fontSize="2xl" fontWeight="bold" textAlign="center">
             Edit Gallery
           </Text>
+          <FormControl>
+            <FormLabel>Gallary Link</FormLabel>
+            <Input
+              value={galleryItem.gallary_link}
+              onChange={(e) =>
+                setGalleryItem({
+                  ...galleryItem,
+                  gallary_link: e.target.value,
+                })
+              }
+              placeholder="Testimonial Name"
+            />
+          </FormControl>
           <FormControl>
             <FormLabel>Gallery Images</FormLabel>
             <Input type="file" multiple onChange={handleFileChange} />
