@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Image, Text, VStack, Button, FormControl, FormLabel, SimpleGrid } from '@chakra-ui/react';
+import { Box, Image, Text, VStack, Button, FormControl, FormLabel, SimpleGrid, Input } from '@chakra-ui/react';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 
 const GalleryView = () => {
@@ -68,13 +68,21 @@ const GalleryView = () => {
                         )}
                     </FormControl>
                     <FormControl>
+            <FormLabel>Google Drive Link</FormLabel>
+            <Input
+              isReadOnly
+              width={"40%"}
+              value={galleryItem.gallary_link || ""}
+            />
+          </FormControl>
+                    <FormControl>
             <FormLabel >
               Created at
             </FormLabel>
             {galleryItem.createdAt && (
               <Box
                 padding="10px 20px"
-                width="30%"
+                width="40%"
                 bgColor={"#eef1f4"}
                 fontSize={"medium"}
               >
@@ -89,7 +97,7 @@ const GalleryView = () => {
             {galleryItem.modifiedAt && (
               <Box
                 padding="10px 20px"
-                width="30%"
+                width="40%"
                 bgColor={"#eef1f4"}
                 fontSize={"medium"}
               >

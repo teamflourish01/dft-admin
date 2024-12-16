@@ -4,13 +4,13 @@ const userContext = createContext();
 
 export const User = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-
+  const url = process.env.REACT_APP_DEV_URL;
   const AuthorizationToken = `Bearer ${token}`;
   const [userData, setUserData] = useState({});
 
   const getUserData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/loginuser", {
+      const response = await fetch(`${url}/loginuser`, {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,

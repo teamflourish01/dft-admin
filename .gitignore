@@ -10,7 +10,7 @@
 
 # production
 /build
-
+dftadminbuild.zip
 # misc
 .DS_Store
 .env.local
